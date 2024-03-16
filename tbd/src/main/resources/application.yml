@@ -5,3 +5,10 @@ netty:
   default:
     allocator:
       max-order: 3
+
+irctc-client:
+  url: https://www.irctc.co.in/eticketing/protected/mapps1
+  retry:
+    attempts: 2
+    delay: 1s
+

@@ -16,10 +16,8 @@ class TestAvailabilityContoller {
     @Test
     fun `test availability controller`() {
         val response = availabilityController.getAvailableTrains(
-            AvailableTrainFilter(
                 "some",
                 "train"
-            )
         )
         Assertions.assertEquals(2,response.size)
         Assertions.assertEquals("sabarmati",response[0].trainName)
