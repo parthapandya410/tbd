@@ -1,4 +1,4 @@
-package com.example
+package com.tbd
 
 import io.micronaut.runtime.Micronaut.run
 fun main(args: Array<String>) {
