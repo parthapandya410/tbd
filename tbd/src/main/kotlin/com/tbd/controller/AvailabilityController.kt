@@ -1,10 +1,10 @@
 package com.tbd.controller
 
-import com.tbd.client.IRCTCClient
-import com.tbd.constants.GREQ_VALUE
 import com.tbd.dto.AvailableTrainFilter
 import com.tbd.dto.AvailableTrains
-import com.tbd.dto.TrainSchedule
+import com.tbd.dto.RouteWithAvailableSeats
+import com.tbd.service.api.IFindRouteService
+import com.tbd.service.FetchListOfStationService
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
@@ -12,7 +12,8 @@ import io.micronaut.http.annotation.QueryValue
 
 @Controller
 class AvailabilityController(
-    private val irctcClient: IRCTCClient
+    private val fetchListOfStationService: FetchListOfStationService,
+    private val findRouteService: IFindRouteService
 ) {
 
     @Get("/availableTrains")
@@ -27,10 +28,25 @@ class AvailabilityController(
         )
     }
 
-    @Get("/trainSchedule/{trainNumber}")
-    fun getTrainSchedule(
-        @PathVariable trainNumber: String
-    ): TrainSchedule{
-        return irctcClient.getTrainSchedule(GREQ_VALUE,trainNumber).body()
+//    @Get("/trainSchedule/{trainNumber}")
+//    fun getTrainSchedule(
+//        @PathVariable trainNumber: String
+//    ): TrainSchedule{
+//        return irctcClient.getTrainSchedule(GREQ_VALUE,trainNumber).body()
+//    }
+
+    @Get("/trains/{trainID}/availableSeats")
+    fun getTheRouteWithAvailableSeats(
+        @PathVariable trainID: String,
+        @QueryValue sourceStation: String,
+        @QueryValue destinationStation: String,
+        @QueryValue dateOfJourney: String
+    ): RouteWithAvailableSeats {
+     TODO()
+        val listOfStations = fetchListOfStationService.getListOfStation(sourceStation,destinationStation,trainID)
+        val routeWithAvailableSeats = findRouteService.getAvailableSeats(listOfStations,dateOfJourney)
+
+
     }
+
 }

@@ -1,7 +1,5 @@
 package com.tbd.dto
 
-import java.util.Date
-
 data class AvailableTrains(
     val trainName: String,
     val trainNumber: String

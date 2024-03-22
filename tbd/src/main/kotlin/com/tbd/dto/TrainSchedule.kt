@@ -17,7 +17,7 @@ data class TrainSchedule(
 	@JsonProperty("trainOwner") val trainOwner: String? = null,
 	@JsonProperty("timeStamp") val timeStamp: String? = null,
 	@JsonProperty("duration") val duration: String? = null,
-	@JsonProperty("stationList") val stationList: List<StationListItem?>? = null
+	@JsonProperty("stationList") val stationList: List<StationListItem>? = null
 )
 
 data class StationListItem(

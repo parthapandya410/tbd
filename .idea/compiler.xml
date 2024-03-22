@@ -30,9 +30,13 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/jakarta.inject/jakarta.inject-api/2.0.1/4c28afe1991a941d7702fe1362c365f0a8641d1e/jakarta.inject-api-2.0.1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.randelshofer/fastdoubleparser/0.8.0/85c25540369921659556ead85e02c99ef0d24280/fastdoubleparser-0.8.0.jar" />
         </processorPath>
-        <module name="tbd.tbd.main" />
-        <module name="tbd.tbd.test" />
+        <module name="tbd.tbd.test~1" />
+        <module name="tbd.tbd.main~1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tbd.tbd.main" target="11" />
+      <module name="tbd.tbd.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
