@@ -1,6 +1,7 @@
 package com.tbd.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.tbd.constants.PAYMENT_FLAG_DEFAULT_VALUE
 
 data class QueryAvailability(
 	@JsonProperty("isLogedinReq") val isLogedinReq: Boolean? = false,
@@ -15,7 +16,7 @@ data class QueryAvailability(
 	@JsonProperty("toStnCode") val toStnCode: String? = null,
 	@JsonProperty("returnTicket") val returnTicket: Boolean? = false,
 	@JsonProperty("loyaltyRedemptionBooking") val loyaltyRedemptionBooking: Boolean? = false,
-	@JsonProperty("paymentFlag") val paymentFlag: String? = "N",
+	@JsonProperty("paymentFlag") val paymentFlag: String? = PAYMENT_FLAG_DEFAULT_VALUE,
 	@JsonProperty("trainNumber") val trainNumber: String? = null,
 	@JsonProperty("quotaCode") val quotaCode: String? = null
 )

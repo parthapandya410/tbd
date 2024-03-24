@@ -4,7 +4,9 @@ import com.tbd.client.IRCTCClient
 import com.tbd.constants.GREQ_VALUE
 import com.tbd.dto.StationListItem
 import com.tbd.dto.TrainSchedule
+import jakarta.inject.Singleton
 
+@Singleton
 class FetchListOfStationService(
     private val irctcClient: IRCTCClient
 ) {

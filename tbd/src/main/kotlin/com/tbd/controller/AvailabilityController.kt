@@ -3,6 +3,7 @@ package com.tbd.controller
 import com.tbd.dto.AvailableTrainFilter
 import com.tbd.dto.AvailableTrains
 import com.tbd.dto.RouteWithAvailableSeats
+import com.tbd.dto.SeatsAvailabilityDTO
 import com.tbd.service.api.IFindRouteService
 import com.tbd.service.FetchListOfStationService
 import io.micronaut.http.annotation.Controller
@@ -35,18 +36,16 @@ class AvailabilityController(
 //        return irctcClient.getTrainSchedule(GREQ_VALUE,trainNumber).body()
 //    }
 
-    @Get("/trains/{trainID}/availableSeats")
+    @Get("/trains/{sourceStation}/{destinationStation}/{dateOfJourney}/{trainID}/availableSeats")
     fun getTheRouteWithAvailableSeats(
         @PathVariable trainID: String,
         @QueryValue sourceStation: String,
         @QueryValue destinationStation: String,
         @QueryValue dateOfJourney: String
-    ): RouteWithAvailableSeats {
-     TODO()
+    ): MutableList<SeatsAvailabilityDTO> {
         val listOfStations = fetchListOfStationService.getListOfStation(sourceStation,destinationStation,trainID)
-        val routeWithAvailableSeats = findRouteService.getAvailableSeats(listOfStations,dateOfJourney)
-
-
+        val routeWithAvailableSeats = findRouteService.getAvailableSeats(listOfStations,dateOfJourney,trainID)
+        return routeWithAvailableSeats
     }
 
 }
